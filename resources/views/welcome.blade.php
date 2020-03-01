@@ -169,6 +169,18 @@
 
     <div class="site-blocks-cover overlay" data-aos="fade" id="home-section">
 
+          <div style="
+            min-height: 600px;
+            height: calc(100vh);
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-attachment: fixed;
+            background-image: url(images/jahadi.jpg);
+            filter: brightness(0.3) blur(3px);
+            z-index: ۰;
+            position: absolute;"></div>
         <div class="container">
             <div style="z-index: 2"
                  class="row align-items-center text-center justify-content-center">
@@ -231,21 +243,7 @@
             </div>
 
         </div>
-        <div style="
-            min-height: 600px;
-            height: calc(100vh);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top;
-            background-attachment: fixed;
-            background-image: url(images/jahadi.jpg);
-            filter: blur(2px);
-            opacity: 0.3;
-            z-index: 1;
-            position: absolute;
-">
 
-        </div>
     </div>
 
 

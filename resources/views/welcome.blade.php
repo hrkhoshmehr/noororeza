@@ -7,7 +7,7 @@
 
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900">  -->
     <!-- <link href='http://www.fontonline.ir/css/IranNastaliq.css' rel='stylesheet' type='text/css'> -->
-    <link href="https://fonts.googleapis.com/css?family=Amiri|Reem+Kufi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amiri|Reem+Kufi|Harmattan&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -53,8 +53,8 @@
         body {
             direction: rtl !important;
             text-align: right !important;
-            font-family: Amiri;
-            background-color: black;
+            font-family: "Harmattan";
+            background-color: #171717;
         }
 
         .nav-link {
@@ -90,16 +90,65 @@
             justify-content: center;
             width: 900px;
         }
+
+        .post-entry h3 a, .project-entry h3 a {
+            color: white;
+        }
+
+        .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
+            color: #fff;
+            background-color: transparent !important;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #ff0000;
+            border-color: #ff2d00;
+            font-weight: bold;
+        }
+
+        .ul-check li:before {
+            font-family: "icomoon";
+            content: "\e5ca";
+            position: absolute;
+            right: 0;
+            top: .6em;
+            font-size: 20px;
+            line-height: 0;
+        }
+
+        .ul-check li {
+            position: relative;
+            padding-right: 30px;
+            margin-bottom: 10px;
+        }
+
+        .input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+
+            border-top-right-radius: 10px !important;
+            border-bottom-right-radius: 10px !important;
+        }
+
+        .input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child), .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+            border-top-left-radius: 10px !important;
+            border-bottom-left-radius: 10px !important;
+        }
     </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-<div id="overlayer"></div>
-<div class="loader">
-    <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">لطفا منتظر بمانید</span>
-    </div>
-</div>
+{{--<div id="overlayer"></div>--}}
+{{--<div class="loader">--}}
+{{--    <div class="spinner-border text-primary" role="status">--}}
+{{--        <span class="sr-only">لطفا منتظر بمانید</span>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <div class="site-wrap">
 
@@ -149,16 +198,21 @@
 
                                 <ul class="site-menu main-menu js-clone-nav d-none d-lg-block text-center">
                                     <li>
-                                        <a href="#home-section" class="nav-link">خانه</a>
+                                        <a href="#next-session" class="nav-link">مراسم بعدی</a>
                                     </li>
 
                                     <li>
-                                        <a href="#projects-section" class="nav-link">نوا و نما</a>
+                                        <a href="#sessions" class="nav-link">آخرین مراسمات</a>
                                     </li>
-                                    <li><a href="#news-section" class="nav-link">تاریحچه</a></li>
-                                    <li><a href="#services-section" class="nav-link">درباره ما</a></li>
-                                    <li><a href="#contact-section" class="nav-link">گروه جهادی</a></li>
+                                    <li><a href="/jahadi" class="nav-link">گروه جهادی</a></li>
+                                    <li><a href="#about" class="nav-link">درباره ما</a></li>
+                                    <a href="/donate"
+                                       style="line-height: 1 !important; font-size: 20px; border-width: 1px"
+                                       class="btn btn-primary btn-sm">نذورات</a>
+
+
                                 </ul>
+
                             </div>
                         </nav>
                     </div>
@@ -169,7 +223,7 @@
 
     <div class="site-blocks-cover overlay" data-aos="fade" id="home-section">
 
-          <div style="
+        <div style="
             min-height: 600px;
             height: calc(100vh);
             width: 100%;
@@ -179,7 +233,7 @@
             background-attachment: fixed;
             background-image: url(images/jahadi.jpg);
             filter: brightness(0.3) blur(3px);
-            z-index: ۰;
+            z-index: 0;
             position: absolute;"></div>
         <div class="container">
             <div style="z-index: 2"
@@ -195,51 +249,6 @@
                 </div>
 
 
-                <div class="menus">
-                    <div style="max-height: 100px" class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                        <div class="media custom-media">
-                            <div class="media-body">
-                                <h3 class="mt-0  text-white">هیئت</h3>
-                                <ul class="items text-white">
-                                    <li>
-                                        دهه اول محرم
-                                    </li>
-                                    <li>
-                                        دهه دوم
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="max-height: 100px" class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                        <div class="media custom-media">
-                            <div class="media-body">
-                                <h3 class="mt-0  text-white">جلسه بعدی</h3>
-                                <h6 class="text-white">۱۰ محرم الحرام <br>مداح: حاج امیر عباسی
-                                    <br>
-                                    سخنران: میرهاشم</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="max-height: 100px" class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                        <div class="media custom-media">
-                            <div class="media-body">
-                                <h3 class="mt-0  text-white">گروه جهادی</h3>
-                                <ul class="items text-white">
-                                    <li>
-                                        گالری تصاویر
-                                    </li>
-                                    <li>
-                                        تابستان
-                                    </li>
-                                    <li>
-                                        جنوب کرمان
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -247,627 +256,280 @@
     </div>
 
 
-    <!--     <div class="site-section  border-bottom">
-          <div class="container">
+    <div class="site-section" id="pricing-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 text-center">
+                    <h2 class="font-weight-bold text-white">مراسم بعدی</h2>
+
+                </div>
+            </div>
             <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-lg-4 col-md-4 mb-4 mb-lg-0 pricing">
+                    <div class="border p-5 text-center rounded">
+                        <h3 class="text-white">جشن نیمه شعبان</h3>
+                        <p class="text-muted mb-4">حاج امیر عباسی - استاد میرهاشم حسینی</p>
+                        <ul class="list-unstyled ul-check text-right success mb-5">
+                            <li>پارکینگ</li>
+                            <li>سفره احسان</li>
+
+                        </ul>
+                        <p><a href="#" class="btn btn-lg btn-primary rounded-0 btn-block">اطلاعیه</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="site-section" id="sessions">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center  d-flex align-items-center">
+                    <h2 class="font-weight-bold text-white ml-auto">آخرین جلسات</h2>
 
+                    <a class="btn btn-primary btn-sm" href="/sessions">آرشیو همه جلسات</a>
 
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+                    <a href="#" class="d-block figure">
+                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="text-muted d-block mb-1">حاج امیر عباسی - استاد میرهاشم حسینی</span>
+                    <h3><a href="#">شب شهادت حضرت رقیه‌(ع)</a></h3>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+                    <a href="#" class="d-block figure">
+                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="text-muted d-block mb-1">حاج امیر عباسی - استاد میرهاشم حسینی</span>
+                    <h3><a href="#">شب شهادت حضرت رقیه‌(ع)</a></h3>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+                    <a href="#" class="d-block figure">
+                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="text-muted d-block mb-1">حاج امیر عباسی - استاد میرهاشم حسینی</span>
+                    <h3><a href="#">شب شهادت حضرت رقیه‌(ع)</a></h3>
+                </div>
 
             </div>
-          </div>
-        </div> -->
+        </div>
+    </div>
 
 
-    <!--
-        <div class="site-section about-section" id="about-section">
-          <div class="container">
+    <div class="site-section about-section" id="about">
+        <div class="container">
             <div class="row align-items-center mb-5 pb-5">
-              <div class="col-lg-7 img-years mb-5 mb-lg-0">
-                <img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="col-lg-4 ml-auto">
-                <span class="sub-title">Learn To Know</span>
-                <h3 class="mb-4">About Us</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate fuga ipsum commodi aliquid aspernatur reiciendis enim cum voluptas id itaque, asperiores modi, voluptatibus sed voluptate nulla et ratione aliquam! Quaerat.</p>
-                <ul class="list-unstyled ul-check text-left success mb-5">
-                    <li>Asperiores modi sed</li>
-                    <li>Enim cum voluptas</li>
-                    <li>Commodi aliquid aspernatur</li>
-                    <li>Cupiditate fuga ipsum commodi</li>
-                  </ul>
-                <p><a href="#" class="btn btn-primary btn-lg rounded-0">Read More About Us</a></p>
-              </div>
-            </div>
-
-
-          </div>
-        </div> -->
-
-    <!--
-       <div class="site-section" id="our-team-section">
-         <div class="container">
-           <div class="row justify-content-center">
-             <div class="col-md-7 text-center">
-               <span class="sub-title">Meet Our Team</span>
-               <h2 class="font-weight-bold text-black">Our Team</h2>
-               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo, quasi. Magni deserunt sunt labore.</p>
-             </div>
-           </div>
-
-           <div class="row">
-
-             <div class="col-lg-4 col-md-6 mb-4">
-               <div class="person">
-                 <div class="bio-img">
-                   <figure>
-                     <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-                   </figure>
-                   <div class="social">
-                     <a href="#"><span class="icon-facebook"></span></a>
-                     <a href="#"><span class="icon-twitter"></span></a>
-                     <a href="#"><span class="icon-instagram"></span></a>
-                   </div>
-                 </div>
-                 <h2>Cloe Marena</h2>
-                 <span class="sub-title d-block mb-3">Architect</span>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum excepturi corporis qui doloribus perspiciatis ipsa modi accusantium repellat.</p>
-               </div>
-             </div>
-
-             <div class="col-lg-4 col-md-6 mb-4">
-               <div class="person">
-                 <div class="bio-img">
-                   <figure>
-                     <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-                   </figure>
-                   <div class="social">
-                     <a href="#"><span class="icon-facebook"></span></a>
-                     <a href="#"><span class="icon-twitter"></span></a>
-                     <a href="#"><span class="icon-instagram"></span></a>
-                   </div>
-                 </div>
-                 <h2>John Rooster</h2>
-                 <span class="sub-title d-block mb-3">Designer</span>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum excepturi corporis qui doloribus perspiciatis ipsa modi accusantium repellat.</p>
-
-               </div>
-             </div>
-
-             <div class="col-lg-4 col-md-6 mb-4">
-               <div class="person">
-                 <div class="bio-img">
-                   <figure>
-                     <img src="images/person_3.jpg" alt="Image" class="img-fluid">
-                   </figure>
-                   <div class="social">
-                     <a href="#"><span class="icon-facebook"></span></a>
-                     <a href="#"><span class="icon-twitter"></span></a>
-                     <a href="#"><span class="icon-instagram"></span></a>
-                   </div>
-                 </div>
-                 <h2>Will Turner</h2>
-                 <span class="sub-title d-block mb-3">Designer</span>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum excepturi corporis qui doloribus perspiciatis ipsa modi accusantium repellat.</p>
-               </div>
-             </div>
-
-             <div class="col-lg-4 col-md-6 mb-4">
-               <div class="person">
-                 <div class="bio-img">
-                   <figure>
-                     <img src="images/person_4.jpg" alt="Image" class="img-fluid">
-                   </figure>
-                   <div class="social">
-                     <a href="#"><span class="icon-facebook"></span></a>
-                     <a href="#"><span class="icon-twitter"></span></a>
-                     <a href="#"><span class="icon-instagram"></span></a>
-                   </div>
-                 </div>
-                 <h2>Nicolas Stainer</h2>
-                 <span class="sub-title d-block mb-3">Engineer</span>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum excepturi corporis qui doloribus perspiciatis ipsa modi accusantium repellat.</p>
-               </div>
-             </div>
-
-             <div class="col-lg-4 col-md-6 mb-4">
-               <div class="person">
-                 <div class="bio-img">
-                   <figure>
-                     <img src="images/person_5.jpg" alt="Image" class="img-fluid">
-                   </figure>
-                   <div class="social">
-                     <a href="#"><span class="icon-facebook"></span></a>
-                     <a href="#"><span class="icon-twitter"></span></a>
-                     <a href="#"><span class="icon-instagram"></span></a>
-                   </div>
-                 </div>
-                 <h2>George Brook</h2>
-                 <span class="sub-title d-block mb-3">Architect</span>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum excepturi corporis qui doloribus perspiciatis ipsa modi accusantium repellat.</p>
-               </div>
-             </div>
-
-             <div class="col-lg-4 col-md-6 mb-4">
-               <div class="person">
-                 <div class="bio-img">
-                   <figure>
-                     <img src="images/person_6.jpg" alt="Image" class="img-fluid">
-                   </figure>
-                   <div class="social">
-                     <a href="#"><span class="icon-facebook"></span></a>
-                     <a href="#"><span class="icon-twitter"></span></a>
-                     <a href="#"><span class="icon-instagram"></span></a>
-                   </div>
-                 </div>
-                 <h2>Emely Hopson</h2>
-                 <span class="sub-title d-block mb-3">Designer</span>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum excepturi corporis qui doloribus perspiciatis ipsa modi accusantium repellat.</p>
-
-               </div>
-             </div>
-
-           </div>
-         </div>
-       </div> -->
-
-    <!-- <div class="site-section" id="pricing-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 text-center">
-            <span class="sub-title">Pricing</span>
-            <h2 class="font-weight-bold text-black">Choose Your Plan</h2>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo, quasi. Magni deserunt sunt labore.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 pricing">
-            <div class="border p-5 text-center rounded">
-              <h3>Starter</h3>
-              <div class="price mb-3"><sup class="currency">$</sup><span class="number">30</span> <span class="per">/year</span></div>
-              <p class="text-muted mb-4">* Billed annualy or $10 per month</p>
-              <ul class="list-unstyled ul-check text-left success mb-5">
-                <li>Max 5 users</li>
-                <li>29 local security</li>
-                <li class="text-muted"><del>Desktop App</del></li>
-                <li class="text-muted"><del>Email Support</del></li>
-                <li class="text-muted"><del>Phone Support 24/7</del></li>
-              </ul>
-              <p><a href="#" class="btn btn-lg btn-primary rounded-0 btn-block">Buy Now</a></p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 pricing">
-            <div class="border p-5 text-center rounded">
-              <h3>Professional</h3>
-              <div class="price mb-3"><sup class="currency">$</sup><span class="number">72</span> <span class="per">/year</span></div>
-              <p class="text-muted mb-4">* Billed annualy or $30 per month</p>
-              <ul class="list-unstyled ul-check text-left success mb-5">
-                <li>Max 10 users</li>
-                <li>29 local security</li>
-                <li>Desktop App</li>
-                <li>Email Support</li>
-                <li class="text-muted"><del>Phone Support 24/7</del></li>
-              </ul>
-              <p><a href="#" class="btn btn-lg btn-primary rounded-0 btn-block">Buy Now</a></p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 pricing">
-            <div class="border p-5 text-center rounded">
-              <h3>Enterprise</h3>
-              <div class="price mb-3"><sup class="currency">$</sup><span class="number">130</span> <span class="per">/year</span></div>
-              <p class="text-muted mb-4">* Billed annualy or $10 per month</p>
-              <ul class="list-unstyled ul-check text-left success mb-5">
-                <li>Unlimitted users</li>
-                <li>29 local security</li>
-                <li>Desktop App</li>
-                <li>Email Support</li>
-                <li>Phone Support 24/7</li>
-              </ul>
-              <p><a href="#" class="btn btn-lg btn-primary rounded-0 btn-block">Buy Now</a></p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
- -->
-
-
-    <!-- <div class="site-section" id="faq-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <img src="images/about_2.jpg" alt="Image" class="img-fluid">
-          </div>
-
-          <div class="col-lg-6 ml-auto pl-lg-5">
-            <span class="sub-title">Ask Us, We Are Happy To Answer</span>
-            <h2 class="font-weight-bold text-black mb-5">Frequently Ask Questions</h2>
-            <div class="accordion" id="accordionExample">
-
-
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  How much you charge for a building?</a>
-                </h2>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, <a href="#">Cnsectetur adipisicing</a> elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
-                  </div>
+                <div class="col-lg-6 img-years mb-5 mb-lg-0">
+                    <img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid">
                 </div>
-              </div>
+                <div class="col-lg-6 ml-auto">
+                    <h3 class="mb-4 text-white">تا آخر ایستاده ایم</h3>
+                    <p class="mb-4 text-white" style="font-size: 20px">گروه فرهنگی جهادی نورالرضا از سال ۱۳۹۱ با برگزاری
+                        اردو های جهادی در مناطق محروم جنوب
+                        کرمان و هیئات مذهبی فعالیت خود را آغاز کرد. این گروه از بیش از ۷۰ نیروی جوان و نوجوان از اقشار
+                        مختلف دانشجو ، طلبه و دانش آموز تشکیل شده است.
+                        اکثریت اعضا سنینی بین ۱۴ تا ۲۵ سال دارند که در کنار این جوانان و نوجوانان پیشکسوتان عرصه اقدامات
+                        فرهنگی نیز حضور دارند و به اداره مجموعه کمک می کنند و راهنمایی های لازم را به عمل می آورند.
+                        فعالیت های گروه فرهنگی جهادی نورالرضا بر اساس اهداف انقلاب اسلامی و بر مبنای منویات مقام معظم
+                        رهبری شکل گرفته است و هدف اصلی این فعالیت ها تربیت جوان مومن انقلابی در خدمت نظام مقدس اسلامی و
+                        تحقق فرمایشات ولایت می باشد.
 
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    What is your process?
-                  </a>
-                </h2>
-
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat voluptate animi hic quasi sequi odio, vitae dolorum soluta sapiente debitis ad similique tempore, aliquam quae nam deserunt dicta ullam perspiciatis minima, quam. Quis repellat corporis aperiam, veritatis nemo iure inventore.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    How it works? Please let us know!
-                  </a>
-                </h2>
-
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum et dolorum libero consequuntur facere molestias beatae quod labore quidem ad quasi eius pariatur quae nam quo soluta optio dicta, doloribus ullam fugit nulla! Itaque necessitatibus eum sed quam eos id!</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Is it free?
-                  </a>
-                </h2>
-
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    Where to find you? Where is your location?
-                  </a>
-                </h2>
-
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-    <!--   <div class="container site-section block-13 testimonial-wrap">
-
-        <div class="row">
-          <div class="col-12 text-center">
-            <span class="sub-title">Happy Clients</span>
-            <h2 class="font-weight-bold text-black mb-5">Testimonials</h2>
-          </div>
-        </div>
-
-        <div class="nonloop-block-13 owl-carousel">
-
-          <div class="testimony px-5">
-            <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-            <h3>Cloe Marena</h3>
-            <span class="sub-title">Owner of Building Co.</span>
-            <p>&ldquo;<em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium non eligendi totam natus ullam cumque! Assumenda optio, ad in! Nesciunt natus veritatis hic iste quas. Sunt iste autem vel repudiandae.</em>&rdquo;</p>
-          </div>
-
-          <div class="testimony px-5">
-            <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-            <h3>Nathalie Channie</h3>
-            <span class="sub-title">Owner of Building Co.</span>
-            <p>&ldquo;<em>Eveniet, laboriosam impedit facilis. Voluptatem, repudiandae eligendi maiores sunt itaque, dolores voluptas labore perferendis, illum tenetur suscipit vero officia. Quaerat facilis cum ex a labore iusto, beatae fuga nam rem, quos vel aliquam nobis.</em>&rdquo;</p>
-          </div>
-
-          <div class="testimony px-5">
-            <img src="images/person_3.jpg" alt="Image" class="img-fluid">
-            <h3>Will Turner</h3>
-            <span class="sub-title">Owner of Building Co.</span>
-            <p>&ldquo;<em>Laboriosam nisi natus quos soluta blanditiis iste in distinctio fugiat perferendis, architecto eveniet provident, consequatur dolore ab nihil voluptatibus laborum magnam cum assumenda nobis, nam quam quae! Unde porro laboriosam nam qui! Eligendi, qui!</em>&rdquo;</p>
-          </div>
-
-          <div class="testimony px-5">
-            <img src="images/person_4.jpg" alt="Image" class="img-fluid">
-            <h3>Nicolas Stainer</h3>
-            <span class="sub-title">Owner of Building Co.</span>
-            <p>&ldquo;<em>Voluptatibus sed vero corporis reiciendis, ducimus iste aliquam doloribus voluptas nam quo assumenda perferendis excepturi accusantium, ipsam minus tempora earum exercitationem laborum. Delectus voluptate quaerat repellat obcaecati. Qui nemo ad similique facere modi dolores.</em>&rdquo;</p>
-          </div>
-        </div>
-      </div> -->
-
-
-    <div class="site-section" id="projects-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7 text-center">
-                    <!-- <span class="sub-title">جلسات</span> -->
-                    <h2 class="font-weight-bold text-white">جلسات</h2>
+                    <p><a href="#" class="btn btn-primary btn-lg rounded-0">درباره ما بیشتر بدانید</a></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4 project-entry">
-                    <a href="images/img_1.jpg" class="d-block figure" data-fancybox="gallery">
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <h3 class="mb-0"><a href="#">Butterfly House</a></h3>
-                    <span class="text-muted">Interior</span>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 project-entry">
-                    <a href="images/img_2.jpg" class="d-block figure" data-fancybox="gallery">
-                        <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <h3 class="mb-0"><a href="#">Interior Bed Design</a></h3>
-                    <span class="text-muted">Design</span>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 project-entry">
-                    <a href="images/img_3.jpg" class="d-block figure" data-fancybox="gallery">
-                        <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <h3 class="mb-0"><a href="#">Kitchen Sink Design</a></h3>
-                    <span class="text-muted">Interior</span>
-                </div>
 
-                <div class="col-lg-4 col-md-6 mb-4 project-entry">
-                    <a href="images/img_4.jpg" class="d-block figure" data-fancybox="gallery">
-                        <img src="images/img_4.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <h3 class="mb-0"><a href="#">Lobby Interior Design</a></h3>
-                    <span class="text-muted">Interior</span>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 project-entry">
-                    <a href="images/img_5.jpg" class="d-block figure" data-fancybox="gallery">
-                        <img src="images/img_5.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <h3 class="mb-0"><a href="#">Relaxation Room Design</a></h3>
-                    <span class="text-muted">Design</span>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 project-entry">
-                    <a href="images/img_6.jpg" class="d-block figure" data-fancybox="gallery">
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <h3 class="mb-0"><a href="#">Butterfly House</a></h3>
-                    <span class="text-muted">Interior</span>
-                </div>
-            </div>
+
         </div>
     </div>
 
 
-    <div class="site-section" id="news-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <span class="sub-title">News &amp; Update</span>
-                    <h2 class="font-weight-bold text-black mb-5">Our Blog Posts</h2>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
-                    <a href="#" class="d-block figure">
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="text-muted d-block mb-1">29, January 2019</span>
-                    <h3><a href="#">Architectural Art Modern</a></h3>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
-                    <a href="#" class="d-block figure">
-                        <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="text-muted d-block mb-1">29, January 2019</span>
-                    <h3><a href="#">Architectural Art Modern</a></h3>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
-                    <a href="#" class="d-block figure">
-                        <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="text-muted d-block mb-1">29, January 2019</span>
-                    <h3><a href="#">Architectural Art Modern</a></h3>
-                </div>
+    {{--    <div class="site-section" id="news-section">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-12 text-center">--}}
+    {{--                    <span class="sub-title">News &amp; Update</span>--}}
+    {{--                    <h2 class="font-weight-bold text-black mb-5">Our Blog Posts</h2>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--            <div class="row mb-5">--}}
+    {{--                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">--}}
+    {{--                    <a href="#" class="d-block figure">--}}
+    {{--                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">--}}
+    {{--                    </a>--}}
+    {{--                    <span class="text-muted d-block mb-1">29, January 2019</span>--}}
+    {{--                    <h3><a href="#">Architectural Art Modern</a></h3>--}}
+    {{--                </div>--}}
+    {{--                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">--}}
+    {{--                    <a href="#" class="d-block figure">--}}
+    {{--                        <img src="images/img_2.jpg" alt="Image" class="img-fluid">--}}
+    {{--                    </a>--}}
+    {{--                    <span class="text-muted d-block mb-1">29, January 2019</span>--}}
+    {{--                    <h3><a href="#">Architectural Art Modern</a></h3>--}}
+    {{--                </div>--}}
+    {{--                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">--}}
+    {{--                    <a href="#" class="d-block figure">--}}
+    {{--                        <img src="images/img_3.jpg" alt="Image" class="img-fluid">--}}
+    {{--                    </a>--}}
+    {{--                    <span class="text-muted d-block mb-1">29, January 2019</span>--}}
+    {{--                    <h3><a href="#">Architectural Art Modern</a></h3>--}}
+    {{--                </div>--}}
 
-            </div>
-            <div class="row mt-5 text-center">
-                <div class="col-12">
-                    <p><a href="#" class="btn btn-primary btn-lg rounded-0">View All Posts</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--            </div>--}}
+    {{--            <div class="row mt-5 text-center">--}}
+    {{--                <div class="col-12">--}}
+    {{--                    <p><a href="#" class="btn btn-primary btn-lg rounded-0">View All Posts</a></p>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
-    <div class="site-section" id="services-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7 text-center">
-                    <span class="sub-title">Services</span>
-                    <h2 class="font-weight-bold text-black">Our Services</h2>
-                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo,
-                        quasi. Magni deserunt sunt labore.</p>
-                </div>
-            </div>
+    {{--    <div class="site-section" id="services-section">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row justify-content-center">--}}
+    {{--                <div class="col-md-7 text-center">--}}
+    {{--                    <span class="sub-title">Services</span>--}}
+    {{--                    <h2 class="font-weight-bold text-black">Our Services</h2>--}}
+    {{--                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo,--}}
+    {{--                        quasi. Magni deserunt sunt labore.</p>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
 
-            <div class="row">
+    {{--            <div class="row">--}}
 
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="media custom-media">
-                        <div class="mr-3 icon"><span class="flaticon-interior-design display-4"></span></div>
-                        <div class="media-body">
-                            <h5 class="mt-0">Innovative Structure</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="media custom-media">
-                        <div class="mr-3 icon"><span class="flaticon-step-ladder display-4"></span></div>
-                        <div class="media-body">
-                            <h5 class="mt-0">Arcitectural Design</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="media custom-media">
-                        <div class="mr-3 icon"><span class="flaticon-turned-off display-4"></span></div>
-                        <div class="media-body">
-                            <h5 class="mt-0">Interior Design</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="media custom-media">
-                        <div class="mr-3 icon"><span class="flaticon-window display-4"></span></div>
-                        <div class="media-body">
-                            <h5 class="mt-0">Modern Window Design</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..
-                        </div>
-                    </div>
-                </div>
+    {{--                <div class="col-lg-4 col-md-6 mb-5">--}}
+    {{--                    <div class="media custom-media">--}}
+    {{--                        <div class="mr-3 icon"><span class="flaticon-interior-design display-4"></span></div>--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h5 class="mt-0">Innovative Structure</h5>--}}
+    {{--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
 
 
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="media custom-media">
-                        <div class="mr-3 icon"><span class="flaticon-measuring display-4"></span></div>
-                        <div class="media-body">
-                            <h5 class="mt-0">Experts Architect</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..
-                        </div>
-                    </div>
-                </div>
+    {{--                <div class="col-lg-4 col-md-6 mb-5">--}}
+    {{--                    <div class="media custom-media">--}}
+    {{--                        <div class="mr-3 icon"><span class="flaticon-step-ladder display-4"></span></div>--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h5 class="mt-0">Arcitectural Design</h5>--}}
+    {{--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
 
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="media custom-media">
-                        <div class="mr-3 icon"><span class="flaticon-sit-down display-4"></span></div>
-                        <div class="media-body">
-                            <h5 class="mt-0">Sofa Design</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..
-                        </div>
-                    </div>
-                </div>
+    {{--                <div class="col-lg-4 col-md-6 mb-5">--}}
+    {{--                    <div class="media custom-media">--}}
+    {{--                        <div class="mr-3 icon"><span class="flaticon-turned-off display-4"></span></div>--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h5 class="mt-0">Interior Design</h5>--}}
+    {{--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
 
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section bg-light" id="contact-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7 text-center">
-                    <span class="sub-title">Get In Touch</span>
-                    <h2 class="font-weight-bold text-black">Contact Us</h2>
-                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo,
-                        quasi. Magni deserunt sunt labore.</p>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-md-12 col-lg-12">
-
-                    <form action="#" class="p-5 bg-white">
-
-                        <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="fullname">Full Name</label>
-                                <input type="text" id="fullname" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <label class="font-weight-bold" for="email">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Email Address">
-                            </div>
-                        </div>
+    {{--                <div class="col-lg-4 col-md-6 mb-5">--}}
+    {{--                    <div class="media custom-media">--}}
+    {{--                        <div class="mr-3 icon"><span class="flaticon-window display-4"></span></div>--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h5 class="mt-0">Modern Window Design</h5>--}}
+    {{--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
 
 
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <label class="font-weight-bold" for="message">Message</label>
-                                <textarea name="message" id="message" cols="30" rows="5" class="form-control"
-                                          placeholder="Say hello to us"></textarea>
-                            </div>
-                        </div>
+    {{--                <div class="col-lg-4 col-md-6 mb-5">--}}
+    {{--                    <div class="media custom-media">--}}
+    {{--                        <div class="mr-3 icon"><span class="flaticon-measuring display-4"></span></div>--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h5 class="mt-0">Experts Architect</h5>--}}
+    {{--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
 
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <input type="submit" value="Send Message" class="btn btn-primary rounded-0 btn-lg">
-                            </div>
-                        </div>
+    {{--                <div class="col-lg-4 col-md-6 mb-5">--}}
+    {{--                    <div class="media custom-media">--}}
+    {{--                        <div class="mr-3 icon"><span class="flaticon-sit-down display-4"></span></div>--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h5 class="mt-0">Sofa Design</h5>--}}
+    {{--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin..--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+
+    {{--    <div class="site-section bg-light" id="contact-section">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row justify-content-center">--}}
+    {{--                <div class="col-md-7 text-center">--}}
+    {{--                    <span class="sub-title">Get In Touch</span>--}}
+    {{--                    <h2 class="font-weight-bold text-black">Contact Us</h2>--}}
+    {{--                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo,--}}
+    {{--                        quasi. Magni deserunt sunt labore.</p>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--            <div class="row">--}}
+
+    {{--                <div class="col-md-12 col-lg-12">--}}
+
+    {{--                    <form action="#" class="p-5 bg-white">--}}
+
+    {{--                        <div class="row form-group">--}}
+    {{--                            <div class="col-md-12 mb-3 mb-md-0">--}}
+    {{--                                <label class="font-weight-bold" for="fullname">Full Name</label>--}}
+    {{--                                <input type="text" id="fullname" class="form-control" placeholder="Full Name">--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                        <div class="row form-group">--}}
+    {{--                            <div class="col-md-12">--}}
+    {{--                                <label class="font-weight-bold" for="email">Email</label>--}}
+    {{--                                <input type="email" id="email" class="form-control" placeholder="Email Address">--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
 
 
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--                        <div class="row form-group">--}}
+    {{--                            <div class="col-md-12">--}}
+    {{--                                <label class="font-weight-bold" for="message">Message</label>--}}
+    {{--                                <textarea name="message" id="message" cols="30" rows="5" class="form-control"--}}
+    {{--                                          placeholder="Say hello to us"></textarea>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+
+    {{--                        <div class="row form-group">--}}
+    {{--                            <div class="col-md-12">--}}
+    {{--                                <input type="submit" value="Send Message" class="btn btn-primary rounded-0 btn-lg">--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+
+
+    {{--                    </form>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
     <footer class="site-footer border-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="row mb-5">
-                        <div class="col-12">
-                            <h3 class="footer-heading mb-4">About Us</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non rem iusto nisi, eum vitae
-                                quas culpa fugiat itaque aliquam nulla, accusamus aspernatur molestias recusandae
-                                voluptates ratione dolores deleniti velit. Corporis.</p>
-                        </div>
-                    </div>
-                    <div class="row mb-5">
-                        <div class="col-md-12">
-                            <h3 class="footer-heading mb-4">Navigation</h3>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Team</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Interior Design</a></li>
-                                <li><a href="#">Architect</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Membership</a></li>
-                            </ul>
-                        </div>
+                <div class="col-lg-4 mb-1 mb-lg-0">
+                    <h3 class="footer-heading mb-4">موقعیت حسینیه نورالرضا (ع)</h3>
+                    <p>خیابان اندرزگو، چهار راه اسدی،خیابان واعظی</p>
+
+                    <div id="map-container-google-1" class="z-depth-1-half map-container">
+                        <iframe
+                            src="https://www.google.com/maps?q=35.799655,51.437582&ll=35.799655,51.437582&z=15&output=embed"
+                            frameborder="0"
+                            style="border:0" allowfullscreen></iframe>
                     </div>
 
 
@@ -875,43 +537,29 @@
                 <div class="col-lg-4">
 
 
-                    <div class="mb-5">
-                        <h3 class="footer-heading mb-4">Recent News</h3>
+                    <div class="mb-1">
+                        <h3 class="footer-heading mb-4">آخرین فعالیت های جهادی</h3>
                         <div class="block-25">
                             <ul class="list-unstyled">
                                 <li class="mb-3">
                                     <a href="#" class="d-flex">
-                                        <figure class="image mr-4">
-                                            <img src="images/img_2.jpg" alt="" class="img-fluid">
+                                        <figure class="image ml-4">
+                                            <img src="images/img_1.jpg" alt="" class="img-fluid">
                                         </figure>
                                         <div class="text">
-                                            <span class="small text-uppercase date">Jan 16, 2018</span>
-                                            <h3 class="heading font-weight-light">Lorem ipsum dolor sit amet consectetur
-                                                elit</h3>
+                                            <span class="date">خرداد ۹۸</span>
+                                            <h3 class="heading font-weight-light">ساخت دو باب خانه</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="mb-3">
                                     <a href="#" class="d-flex">
-                                        <figure class="image mr-4">
-                                            <img src="images/img_3.jpg" alt="" class="img-fluid">
+                                        <figure class="image ml-4">
+                                            <img src="images/img_1.jpg" alt="" class="img-fluid">
                                         </figure>
                                         <div class="text">
-                                            <span class="small text-uppercase date">Jan 16, 2018</span>
-                                            <h3 class="heading font-weight-light">Lorem ipsum dolor sit amet consectetur
-                                                elit</h3>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="mb-3">
-                                    <a href="#" class="d-flex">
-                                        <figure class="image mr-4">
-                                            <img src="images/img_4.jpg" alt="" class="img-fluid">
-                                        </figure>
-                                        <div class="text">
-                                            <span class="small text-uppercase date">Jan 16, 2018</span>
-                                            <h3 class="heading font-weight-light">Lorem ipsum dolor sit amet consectetur
-                                                elit</h3>
+                                            <span class="date">خرداد ۹۸</span>
+                                            <h3 class="heading font-weight-light">پخش ارزاق حومه تهران</h3>
                                         </div>
                                     </a>
                                 </li>
@@ -922,19 +570,19 @@
                 </div>
 
 
-                <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="col-lg-4 mb-1 mb-lg-0">
 
                     <div class="mb-5">
-                        <h3 class="footer-heading mb-2">Subscribe Newsletter</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit minima minus odio.</p>
+                        <h3 class="footer-heading mb-2">ثبت نام در سامانه پیامکی</h3>
+                        <p>شما میتوانید با وارد کردن شماره همراه خود اطلاعیه هر جلسه را دریافت کنید.</p>
 
                         <form action="#" method="post" class="form-subscribe">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control border-white text-white bg-transparent"
-                                       placeholder="Enter Email" aria-label="Enter Email"
+                                       placeholder="۰۹۱۲۱۲۳۴۵۶۷" aria-label="Enter Email"
                                        aria-describedby="button-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+                                    <button class="btn btn-primary" type="button" id="button-addon2">ارسال</button>
                                 </div>
                             </div>
                         </form>
@@ -943,13 +591,19 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="footer-heading mb-4">Follow Us</h3>
+                            <h3 class="footer-heading mb-4">در شبکه های اجتماعی</h3>
 
                             <div>
-                                <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                                <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                                {{--                                <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>--}}
+                                {{--                                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>--}}
+                                <a target="_blank" href="https://instagram.com/nororeza" class="pl-3 pr-3"><span
+                                        class="icon-instagram"></span></a>
+                                <a target="_blank" href="https://instagram.com/g_nororeza" class="pl-3 pr-3"><span
+                                        class="icon-instagram"></span></a>
+                                <a target="_blank" href="https://t.me/nororeza" class="pl-3 pr-3"><span
+                                        class="icon-telegram"></span></a>
+                                <a target="_blank" href="https://t.me/g_nororeza" class="pl-3 pr-3"><span
+                                        class="icon-telegram"></span></a>
                             </div>
                         </div>
                     </div>
@@ -958,15 +612,11 @@
                 </div>
 
             </div>
-            <div class="row pt-5 mt-5 text-center">
+            <div class="row pt-1 mt-1 text-center">
                 <div class="col-md-12">
+                    <img height="150px" src="/images/logo.png" alt="">
                     <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                        All rights reserved | This template is made with <i class="icon-heart text-danger"
-                                                                            aria-hidden="true"></i> by <a
-                            href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        تمامی حقوق متعلق به گروه فرهنگی-جهادی نورالرضا (ع) میباشد.
                     </p>
                 </div>
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@
                 ساخت مراسم جدید
             </h2>
             <hr>
-            <form enctype="multipart/form-data" action="{{route('session.store')}}" method="POST">
+            <form enctype="multipart/form-data" action="{{route('admin.session.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label>عنوان</label>

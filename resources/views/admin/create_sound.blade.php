@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@
                 صوت جدید
             </h2>
             <hr>
-            <form enctype="multipart/form-data" action="{{route('sound.store')}}" method="POST">
+            <form enctype="multipart/form-data" action="{{route('admin.sound.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label>عنوان</label>

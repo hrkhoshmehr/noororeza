@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Sound;
 use App\Models\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SoundController extends Controller
 {
@@ -15,7 +16,9 @@ class SoundController extends Controller
      */
     public function index()
     {
-        $sounds = Sound::all();
+        $sounds = Sound::orderByDesc('id')->get();
+
+        return view('admin.index_sounds', compact('sounds'));
     }
 
     /**
@@ -39,6 +42,7 @@ class SoundController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'session_id' => 'required',
             'title' => 'required',
             'name' => 'required',
         ]);

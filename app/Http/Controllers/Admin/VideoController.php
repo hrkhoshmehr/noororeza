@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Declartion;
+use App\Models\Video;
+use App\Models\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class DeclartionController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class DeclartionController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::orderByDesc('id')->get();
+
+        return view('admin.index_videos', compact('videos'));
     }
 
     /**
@@ -24,7 +28,9 @@ class DeclartionController extends Controller
      */
     public function create()
     {
-        //
+        $sessions = Session::orderByDesc('id')->get();
+
+        return view('admin.create_video', compact('sessions'));
     }
 
     /**
@@ -35,27 +41,35 @@ class DeclartionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'description' => 'required',
+            'uid' => 'required',
+            'session_id' => 'required',
+        ]);
+
+        $video = Video::create($request->all());
+
+        return back()->with('message', 'video created.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Declartion  $declartion
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Declartion $declartion)
+    public function show(Video $video)
     {
-        //
+        return view('admin.show_video', compact('video'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Declartion  $declartion
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Declartion $declartion)
+    public function edit(Video $video)
     {
         //
     }
@@ -64,10 +78,10 @@ class DeclartionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Declartion  $declartion
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Declartion $declartion)
+    public function update(Request $request, Video $video)
     {
         //
     }
@@ -75,10 +89,10 @@ class DeclartionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Declartion  $declartion
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Declartion $declartion)
+    public function destroy(Video $video)
     {
         //
     }

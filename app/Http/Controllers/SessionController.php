@@ -2,139 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use App\Models\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 
 class SessionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-
+    public function indexSessions()
     {
-        $sessions = Session::all();
-
-        return view('admin.index_sessions', compact('sessions'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $events = Event::all();
-
-        return view('admin.create_session', compact('events'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $session = Session::create($request->all());
-        $eventType = optional($session->event)->type;
-        if($eventType == 2) {
-            $session->type = 2;
-        }else {
-            $session->type = 1;
-        }
-        if($request->cover) {
-            $path = $request->file('cover')->storeAs("sessions/$session->id", "cover.jpg");
-            $session->cover = $path;
-        }
-        Storage::makeDirectory("sessions/$session->id/sounds");
-
-
-        $session->save();
-
-        return back()->with('message', 'session created.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Session $session)
-    {
-        $session->load('videos', 'photos', 'sounds');
-        $video = $session->videos->first();
-        return view('session', compact('session'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Session $session)
-    {
-        return view('admin.edit_session', compact('session'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Session $session)
-    {
-        $session->update($request->all());
-
-        return back()->with('message', 'session updated.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Session $session)
-    {
-        $session->delete();
-
-        return back()->with('message','session deleted.');
-    }
-
-    public function getSessions(Request $request) {
-
-        $sessions = Session::where('type', 1)->paginate(12);
+        $sessions = Session::whereNotIn('type', [2])->orderByDesc('id')->get();
 
         return view('sessions', compact('sessions'));
     }
 
-    public function getSession(Request $requst, Session $session) {
-        return view('session', compact('session'));
-    }
-
-    public function indexJahadi()
+    public function show(Session $session)
     {
-        $sessions = Session::where('type', 2)->paginate(12);
-
-        return view('index_jahadi', compact('sessions'));
-    }
-
-    public function showJahadi(Session $session)
-    {
-        $session->load('photos', 'sounds', 'videos');
-
-        return view('show_jahadi', compact('session'));
+        $session->load('videos', 'photos', 'sounds');
+        $video = $session->videos->first();
+        return view('User.session', compact('session'));
     }
 }

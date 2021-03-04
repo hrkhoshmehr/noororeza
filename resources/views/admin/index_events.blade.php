@@ -1,28 +1,36 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
+@section('title', 'مناسبات')
     @section('content')
 
     <div class="container">
-        <h1 class="text-white">مناسبات</h1>
-        <a class="btn btn-primary float-right" href="{{route('event.create')}}"> جدید</a>
+        <h1>مناسبات</h1>
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{session('message')}}
+            </div>
+        @endif
+        @foreach ($errors->all() as $error)
+            <li class="alert alert-danger">{{ $error }}</li>
+        @endforeach
+        <a class="btn btn-success float-left" href="{{route('admin.event.create')}}"> جدید</a>
         <table class="table">
         <thead>
             <tr>
-                <th class="text-white" scope="col">شناسه</th>
-                <th class="text-white" scope="col">عنوان</th>
-                <th class="text-white" scope="col">نوع</th>
+                <th scope="col">شناسه</th>
+                <th scope="col">عنوان</th>
+                <th scope="col">نوع</th>
             </tr>
         </thead>
         <tbody>
         @foreach ($events as $event)
             <tr>
-                <td class="text-white">{{$event->id}}</td>
-                <td class="text-white">{{$event->title}}</td>
-                <td class="text-white">{{$event->type}}</td>
+                <td>{{$event->id}}</td>
+                <td>{{$event->title}}</td>
+                <td>{{$event->getType()}}</td>
                 <td>
-                    <button class="btn btn-secondary" href="{{route('event.show', $event->id)}}">جزئیات</button>
-                    <button class="btn btn-secondary" href="{{route('event.edit', $event->id)}}">ویرایش</button>
-                    <button class="btn btn-secondary" href="{{route('event.destroy', $event->id)}}">حذف</button>
+                    <a class="btn btn-info" href="{{route('admin.event.show', $event->id)}}">جزئیات</a>
+                    <a class="btn btn-warning" href="{{route('admin.event.edit', $event->id)}}">ویرایش</a>
+                    <a class="btn btn-danger" href="{{route('admin.event.destroy', $event->id)}}">حذف</a>
                 </td>
             </tr>
         @endforeach

@@ -1,32 +1,47 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
+@section('title', 'مراسمات')
     @section('content')
 
     <div class="container">
-        <h1 class="text-white">مراسمات</h1>
-        <a class="btn btn-primary float-right" href="{{route('session.create')}}"> جدید</a>
+        <h1>مراسمات</h1>
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{session('message')}}
+            </div>
+        @endif
+        @foreach ($errors->all() as $error)
+            <li class="alert alert-danger">{{ $error }}</li>
+        @endforeach
+        <a class="btn btn-success float-left" href="{{route('admin.session.create')}}"> جدید</a>
         <table class="table">
         <thead>
             <tr>
-                <th class="text-white" scope="col">شناسه</th>
-                <th class="text-white" scope="col">عنوان</th>
-                <th class="text-white" scope="col">مناسبت</th>
+                <th scope="col">شناسه</th>
+                <th scope="col">عنوان</th>
+                <th scope="col">نوع</th>
+                <th scope="col">مناسبت</th>
             </tr>
         </thead>
         <tbody>
         @foreach ($sessions as $session)
             <tr>
-                <td class="text-white">{{$session->id}}</td>
-                <td class="text-white">{{$session->title}}</td>
-                <td class="text-white">{{optional($session->event)->title}}</td>
+                <td>{{$session->id}}</td>
+                <td>{{$session->title}}</td>
+                <td>{{$session->getType()}}</td>
+                <td>{{optional($session->event)->title}}</td>
                 <td>
-                    <form method="POST" action="{{route('session.destroy', $session->id)}}">
+                    <form method="POST" action="{{route('admin.session.destroy', $session->id)}}">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">
-                            <a class="btn btn-success" href="{{route('session.show', $session->id)}}">جزئیات</a>
-                            <a class="btn btn-warning" href="{{route('session.edit', $session->id)}}">ویرایش</a>
+                            <a class="btn btn-info" href="{{'/session/'.$session->id}}">جزئیات</a>
+                            <a class="btn btn-warning" href="{{route('admin.session.edit', $session->id)}}">ویرایش</a>
                             <input type="submit" class="btn btn-danger" value="حذف">
+                            @if($session->published == 1)
+                                <a class="btn btn-outline-success" href="{{'/admin/session/unpublish/'.$session->id}}">عدم انتشار</a>
+                            @else
+                                <a class="btn btn-success" href="{{'/admin/session/publish/'.$session->id}}">انتشار</a>
+                            @endif
                         </div>
                     </form>
                 </td>

@@ -1,39 +1,55 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
-<head>
+<html lang="en" dir="rtl">
+    <head>
+  	    <title>@yield('title')</title>
         <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.rtl.min.css" integrity="sha384-mUkCBeyHPdg0tqB6JDd+65Gpw5h/l8DKcCTV2D2UpaMMFd7Jo8A+mDAosaWgFBPl" crossorigin="anonymous"><link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
-    <style>
-        *{
-            font-family:'BYekan',Sans-Serif;
-        }
-    </style>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" >
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
+		<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
+    </head>
+    <body style="direction: rtl !important; text-align: right !important;">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        <div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+	                <ul class="list-unstyled components mb-5">
+	                    <li>
+                            <a href="{{route('admin.event.index')}}">مناسبات</a>
+                        </li>
+	                    <li>
+                            <a href="{{route('admin.session.index')}}">مراسمات</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.video.index')}}">ویدیو ها</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.sound.index')}}">صوت ها</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.photo.index')}}">تصاویر</a>
+                        </li>
+	                </ul>
 
-    <title>{{ config('app.name', 'نورالرضا') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+	            </div>
+    	    </nav>
 
-</head>
-<body>
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
+            <div id="content" class="p-4 p-md-5 float-right">
+
+                @yield('content')
+            </div>
+        </div>
+
+        <script src="{{asset('js/admin/jquery.min.js')}}"></script>
+
+        <script src="{{asset('js/admin/popper.js')}}"></script>
+        <script src="{{asset('js/admin/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/admin/main.js')}}"></script>
+    </body>
 </html>

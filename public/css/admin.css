@@ -1,0 +1,90 @@
+.main-front {
+background: #999; /* For now */
+	font-family: helvetica;
+	color: #fff;
+	font-weight: 200;
+	text-shadow: 0 1px 0 #111;
+}
+article {
+	position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-top: -275px;
+   margin-left: -200px;
+}
+
+[dir=ltr] .title {
+	font-size: 36px;
+    letter-spacing: -2px;
+    text-align: center
+}
+title-bottom {
+	font-size: 24px;
+	display: block;
+	padding-top: 10%;
+	text-align: center;
+	line-height: 1.5em;
+}
+a {
+	color: #fff;
+}
+[dir=ltr] a:hover {
+	text-decoration: none;
+}
+
+.post_image {
+	padding-left: 8%;
+}
+
+.social {
+	height: 36px;
+	width: 430px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.social img {
+	float: left;
+	width: 36px;
+	margin-left: 20px;
+	height: 36px;
+	opacity: 0.5;
+		-webkit-transition: opacity .5s ease-in;
+	   -moz-transition: opacity .5s ease-in;
+	    -ms-transition: opacity .5s ease-in;
+	     -o-transition: opacity .5s ease-in;
+	        transition: opacity .5s ease-in;
+}
+#action-txt {
+	text-align: center;
+}
+.social img:hover {
+	opacity: 1;
+}
+
+/* Top nav and header
+-------------------------------------------------- */
+
+[dir=ltr] .bs-docs-nav {
+  background-color: #563d7c;
+}
+.bs-docs-nav .navbar-brand {
+  color: #fff;
+}
+[dir=ltr] .bs-docs-nav .navbar-nav > li > a {
+  color: #cdbfe3;
+}
+.bs-docs-nav .navbar-nav > li > a:hover {
+  color: #fff;
+}
+[dir=ltr] .bs-docs-nav .navbar-nav > .active > a,
+[dir=ltr] .bs-docs-nav .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: #463265;
+}
+[dir=ltr] .bs-docs-nav .navbar-toggle {
+  border-color: #563d7c;
+}
+[dir=ltr] .bs-docs-nav .navbar-toggle:hover {
+  background-color: #463265;
+  border-color: #463265;
+}

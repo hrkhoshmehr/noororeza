@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@
                 ساخت مناسبت جدید
             </h2>
             <hr>
-            <form action="{{route('event.store')}}" method="POST">
+            <form action="{{route('admin.event.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label>عنوان</label>

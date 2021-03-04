@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Photo;
 use App\Models\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PhotoController extends Controller
 {
@@ -15,7 +16,9 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        $photos = Photo::orderByDesc('id')->get();
+
+        return view('admin.index_photos', compact('photos'));
     }
 
     /**
@@ -41,8 +44,9 @@ class PhotoController extends Controller
 
 
         $this->validate($request, [
-                'images' => 'required',
-                'images.*' => 'mimes:png,jpg'
+            'session_id' => 'required',
+            'images' => 'required',
+            'images.*' => 'mimes:png,jpg'
         ]);
 
 
@@ -80,7 +84,9 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        //
+        $sessions = Session::orderByDesc('id')->get();
+
+        return view('admin.edit_photo', compact('sessions', 'photo'));
     }
 
     /**
@@ -92,7 +98,9 @@ class PhotoController extends Controller
      */
     public function update(Request $request, Photo $photo)
     {
-        //
+        $photo->update($request->all());
+
+        return back()->with('message', 'عکس ویرایش شد');
     }
 
     /**

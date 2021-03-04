@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,23 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div class="page-sidebar navbar-collapse collapse">
+                        <ul class="page-sidebar-menu page-sidebar-menu-light " data-keep-expanded="false" data-auto-scroll="true"
+                            data-slide-speed="200">
+                            <li class="sidebar-toggler-wrapper">
+                                <div class="sidebar-toggler">
+                                </div>
+                            </li>
+                            <br>
+
+                            @if( $permissionsAvailableForMenu->contains('dashboard') )
+                                <li class="javascript:;" data-routename="dashboard">
+                                    <a href="{{url('panel/admin/dashboard')}}">
+                                        <i class="icon-home"></i>
+                                        <span class="title">داشبورد</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
                 </div>
             </div>
         </div>

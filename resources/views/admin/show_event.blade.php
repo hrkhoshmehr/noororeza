@@ -1,10 +1,10 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
+@section('title', $event->title)
     @section('content')
 
     <div class="container">
         <h1 class="text-white">مناسبات</h1>
-        <a class="btn btn-primary float-right" href="{{route('event.create')}}"> جدید</a>
+        <a class="btn btn-primary float-right" href="{{route('admin.event.create')}}"> جدید</a>
         <table class="table">
         <thead>
             <tr>
@@ -16,9 +16,9 @@
             <tr>
                 <td class="text-white">{{$event->title}}</td>
                 <td>
-                    <button class="btn btn-secondary" href="{{route('event.show', $event->id)}}">جزئیات</button>
-                    <button class="btn btn-secondary" href="{{route('event.edit', $event->id)}}">ویرایش</button>
-                    <button class="btn btn-secondary" href="{{route('event.destroy', $event->id)}}">حذف</button>
+                    <button class="btn btn-secondary" href="{{route('admin.event.show', $event->id)}}">جزئیات</button>
+                    <button class="btn btn-secondary" href="{{route('admin.event.edit', $event->id)}}">ویرایش</button>
+                    <button class="btn btn-secondary" href="{{route('admin.event.destroy', $event->id)}}">حذف</button>
                 </td>
             </tr>
         @endforeach

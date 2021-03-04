@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -17,29 +17,20 @@
                 کلیپ جدید
             </h2>
             <hr>
-            <form action="{{route('video.store')}}" method="POST">
+            <form action="{{route('admin.video.store')}}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label>عنوان</label>
-                    <input type="text" name="title" class="form-control" placeholder="عنوان">
-                </div>
                 <div class="form-group">
                     <label>توضیحات</label>
                     <textarea type="text" name="description" class="form-control" placeholder="توضیحات"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>شناسه</label>
-                    <input type="text" name="video_id" class="form-control" placeholder="شناسه">
-                </div>
-                <div class="form-group">
-                    <label>لینک</label>
-                    <input type="text" name="path" class="form-control" placeholder="لینک آپارات">
+                    <label>آیدی آپارات</label>
+                    <input type="text" name="uid" class="form-control" placeholder="uid">
                 </div>
                 <div class="form-group">
                     <label for="type">مراسم</label>
                     <select class="form-control" id="type" name="session_id">
-                        <option class="dropdown-item" value="">متفرقه</option>
                         @foreach ($sessions as $session)
                             <option class="dropdown-item" value="{{$session->id}}">{{$session->title}}</option>
                         @endforeach

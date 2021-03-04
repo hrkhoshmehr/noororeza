@@ -13,15 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+
+Route::post('login', 'Admin\UserController@login');
+Route::get('login', function () {
+    return view('login');
+})->name('login');
+    Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+        Route::get('panel', function () {
+            return view('admin.panel');
+        });
+        Route::resource('session', 'Admin\SessionController');
+        Route::resource('event', 'Admin\EventController');
+        Route::resource('photo', 'Admin\PhotoController');
+        Route::resource('video', 'Admin\VideoController');
+        Route::resource('sound', 'Admin\SoundController');
+        Route::post('user/create', 'Admin\UserController@addUser');
+        Route::get('session/publish/{session}', 'Admin\SessionController@togglePublish');
+        Route::get('session/unpublish/{session}', 'Admin\SessionController@togglePublish');
+
 });
 
-Route::resource('session', 'SessionController');
-Route::resource('event', 'EventController');
-Route::resource('photo', 'photoController');
-Route::resource('video', 'VideoController');
-Route::resource('sound', 'SoundController');
-Route::get('/sessionss', 'SessionController@indexSessions');
-Route::get('jahadi', 'SessionController@indexJahadi');
-Route::get('jahadi/{session}', 'SessionController@showjahadi');
+Route::get('heyat', 'SessionController@indexSessions')->name('heyat.index');
+Route::get('heyat/{session}', 'SessionController@show')->name('heyat.show');;
+Route::get('jahadi', 'SessionController@indexJahadi')->name('jahadi.index');;
+Route::get('jahadi/{session}', 'SessionController@showjahadi')->name('jahadi.show');;
+Route::post('phone', 'PhoneController@store');

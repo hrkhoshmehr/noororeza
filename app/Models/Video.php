@@ -14,16 +14,14 @@ class Video extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function session(): BelongsTo
+    public function session()
     {
         return $this->belongsTo(Session::class);
     }
 
     protected $fillable=[
-        'title',
         'description',
-        'path',
         'session_id',
-        'video_id',
+        'uid',
     ];
 }

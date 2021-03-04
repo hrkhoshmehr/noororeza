@@ -29,6 +29,14 @@ class Session extends Model
         return $this->hasMany(Video::class);
     }
 
+    public function getType() {
+        if($this->type == 1) {
+            return 'هیئت';
+        } elseif($this->type == 2) {
+            return 'جهادی';
+        }
+    }
+
     protected $fillable=[
         'title',
         'description',

@@ -15,6 +15,7 @@
         "hekmatinasser/verta": "^1.11",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.2",
         "mohammadsalmani28/video": "^1.0",
         "morilog/jalali": "3.*"
     },

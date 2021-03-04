@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeclartionsTable extends Migration
+class CreatePhonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateDeclartionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('declartions', function (Blueprint $table) {
+        Schema::create('phones', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->string('image')->nullable();
-            $table->boolean('published')->default(false);
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateDeclartionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('declartions');
+        Schema::dropIfExists('phones');
     }
 }

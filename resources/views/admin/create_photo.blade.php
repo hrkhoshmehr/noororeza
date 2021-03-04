@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@
                 عکس جدید
             </h2>
             <hr>
-            <form enctype="multipart/form-data" action="{{route('photo.store')}}" method="POST">
+            <form enctype="multipart/form-data" action="{{route('admin.photo.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="type">مراسم</label>

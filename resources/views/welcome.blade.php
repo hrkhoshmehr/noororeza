@@ -7,6 +7,90 @@
 {{--        <span class="sr-only">لطفا منتظر بمانید</span>--}}
 {{--    </div>--}}
 {{--</div>--}}
+
+@section('style')
+<style>
+
+    #myImg {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      height: 80%;
+      max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+
+
+    /* Add Animation */
+    .modal-content, #caption {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {-webkit-transform:scale(0)}
+      to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+      from {transform:scale(0)}
+      to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+      margin-top: -35px;
+      position: absolute;
+      right: 350px;
+      color: #f1f1f1;
+      font-size: 100px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+      .modal-content {
+        width: 100%;
+      }
+    }
+    </style>
+@endsection
+
 @section('content')
 
 <div class="site-wrap">
@@ -47,59 +131,68 @@
 
     </div>
 
+    @if($nextSession != null)
+        <div class="site-section" id="pricing-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="font-weight-bold text-white">مراسم بعدی</h2>
 
-    <div class="site-section" id="pricing-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7 text-center">
-                    <h2 class="font-weight-bold text-white">مراسم بعدی</h2>
-
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-lg-4 col-md-4 mb-4 mb-lg-0 pricing">
-                    <div class="border p-5 text-center rounded">
-                        <h3 class="text-white">{{$nextSession->title}}</h3>
-                        <p class="text-muted mb-4">{{$nextSession->description}}</p>
-                        <ul class="list-unstyled ul-check text-right success mb-5">
-                            <li>پارکینگ</li>
-                            <li>سفره احسان</li>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-lg-4 col-md-4 mb-4 mb-lg-0 pricing">
+                        <div class="border p-5 text-center rounded">
+                            <h3 class="text-white">{{$nextSession->title}}</h3>
+                            <p class="text-muted mb-4">{!! nl2br(e($nextSession->description)) !!}</p>
+                            <ul class="list-unstyled ul-check text-right success mb-5">
+                                <li>پارکینگ</li>
+                                <li>سفره احسان</li>
 
-                        </ul>
-                        <p><a href="#" class="btn btn-lg btn-primary rounded-0 btn-block">اطلاعیه</a></p>
+                            </ul>
+
+                            <img id="myImg" src="{{$nextSession->notification}}" alt="Snow" style="width:50%;max-width:200px">
+
+                            <!-- The Modal -->
+                            <div id="myModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
+    @if($lastSessions->count() > 0)
 
-    <div class="site-section" id="sessions">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12 text-center  d-flex align-items-center">
-                    <h2 class="font-weight-bold text-white ml-auto">آخرین جلسات</h2>
+        <div class="site-section" id="sessions">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 text-center  d-flex align-items-center">
+                        <h2 class="font-weight-bold text-white ml-auto">آخرین جلسات</h2>
 
-                    <a class="btn btn-primary btn-sm" href="/sessions/?type=1">آرشیو همه جلسات</a>
+                        <a class="btn btn-primary btn-sm" href="/heyat">آرشیو همه جلسات</a>
+
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($lastSessions as $lastSession)
+                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+                            <a href="{{$lastSession->getType().'/'.$lastSession->slug}}" class="d-block figure">
+                                <img src="{{$lastSession->cover ? $lastSession->cover : 'images/img_1.jpg'}}" alt="Image" width="300px" height="300px" class="rounded">
+                            </a>
+                            <h3><a href="{{$lastSession->getType().'/'.$lastSession->slug}}">{{$lastSession->title}}</a></h3>
+                        </div>
+                    @endforeach
+
 
                 </div>
             </div>
-            <div class="row">
-                @foreach ($lastSessions as $lastSession)
-                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
-                        <a href="session/{{$lastSession->id}}" class="d-block figure">
-                            <img src="{{$lastSession->cover ? $lastSession->cover : 'images/img_1.jpg'}}" alt="Image" width="300px" height="300px" class="rounded">
-                        </a>
-                        <span class="text-muted d-block mb-1">{{$lastSession->description}}</span>
-                        <h3><a href="session/{{$lastSession->id}}">{{$lastSession->title}}</a></h3>
-                    </div>
-                @endforeach
-
-
-            </div>
         </div>
-    </div>
+    @endif
 
 
     <div class="site-section about-section" id="about">
@@ -301,6 +394,28 @@
 
 
 </div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+</script>
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
@@ -313,7 +428,7 @@
 <script src="js/aos.js"></script>
 <script src="js/jquery.sticky.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.js" integrity="sha256-hGEny5XAEHORWP1iW6kubPYV+TdjJ1x8OSC9hRvpwWg=" crossorigin="anonymous"></script>
 <script src="js/jquery.fancybox.min.js"></script>
 <script src="js/main.js"></script>
 

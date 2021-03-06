@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Verta;
 use App\Models\Event;
 use App\Models\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,22 +45,25 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-
-        $session = Session::create($request->all());
+        $input = $request->all();
+        $input['date'] = Carbon::createFromTimestamp($request->date);
+        $v = verta($input['date']);
+        $session = Session::create($input);
         $eventType = optional($session->event)->type;
-        if($eventType == 2) {
-            $session->type = 2;
-        }else {
-            $session->type = 1;
-        }
+
         if($request->cover) {
             $path = $request->file('cover')->storeAs("sessions/$session->id", "cover.jpg");
             $session->cover = $path;
+        }
+        if($request->notification) {
+            $path = $request->file('notification')->storeAs("sessions/$session->id", "notification.jpg");
+            $session->notification = $path;
         }
         Storage::makeDirectory("sessions/$session->id/sounds");
 
 
         $session->save();
+
 
         return back()->with('message', 'session created.');
     }
@@ -79,7 +84,8 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
-        return view('admin.edit_session', compact('session'));
+        $events = Event::orderByDesc('id')->get();
+        return view('admin.edit_session', compact('events', 'session'));
     }
 
     /**
@@ -93,7 +99,17 @@ class SessionController extends Controller
     {
         $session->update($request->all());
 
-        return back()->with('message', 'session updated.');
+        if($request->notification) {
+            $path = $request->file('notification')->storeAs("sessions/$session->id", "notification.jpg");
+            $session->notification = $path;
+        }
+        if($request->cover) {
+            $path = $request->file('cover')->storeAs("sessions/$session->id", "cover.jpg");
+            $session->cover = $path;
+        }
+        $session->save();
+
+        return redirect('admin/session')->with('message', 'session updated.');
     }
 
     /**

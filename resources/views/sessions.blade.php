@@ -81,20 +81,19 @@
     </div>
 
     <div class="site-section" id="sessions">
-        <div class="container">
-            <div class="row justify-content-center">
+        <div class="container" style="background-color: rgb(82, 82, 82); padding: 50px; border-radius: 15px">
+            <div class="row justify-content-center" >
                 <div class="col-md-12 text-center  d-flex align-items-center">
-                    <h2 class="font-weight-bold text-white ml-auto">آرشیو جلسات</h2>
+                    <h2 class="font-weight-bold text-white ml-auto mb-5">{{$title}}</h2>
                 </div>
             </div>
             <div class="row">
                 @foreach ($sessions as $session)
                     <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
-                        <a href="#" class="d-block figure">
-                            <img src="{{$session->cover}}" alt="Image" width="300px" height="300px">
+                        <a href="{{$session->getType().'/'.$session->slug}}" class="d-block figure">
+                            <img class="rounded" src="{{$session->cover}}" alt="Image" width="300px" height="300px">
                         </a>
-                        <h3><a href="{{route('heyat.show', $session->id)}}">{{$session->title}}</a></h3>
-                        <span class="text-muted d-block mb-1">{{$session->description}}</span>
+                            <h3><a href="{{$session->getType().'/'.$session->slug}}">{{$session->title}}</a></h3>
                     </div>
                 @endforeach
             </div>

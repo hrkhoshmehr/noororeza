@@ -4,6 +4,7 @@
     <title>گروه فرهنگی و جهادی نورالرضا (ع)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="_token" content="{{ csrf_token()}}">
 
     <link href="https://fonts.googleapis.com/css?family=Amiri|Reem+Kufi|Harmattan&display=swap" rel="stylesheet">
 
@@ -17,7 +18,7 @@
     <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css" >
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css" integrity="sha256-IOK+l4ZTv3gsgXRB8x72XhfUPf5SjCzttu6BDdx+2vU=" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
@@ -261,16 +262,21 @@
                 <div class="col-lg-4 mb-1 mb-lg-0">
 
                     <div class="mb-5">
+                        <div id="result" class="alert alert-success" style="display: none">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <span></span>
+                        </div>
                         <h3 class="footer-heading mb-2">ثبت نام در سامانه پیامکی</h3>
                         <p>شما میتوانید با وارد کردن شماره همراه خود اطلاعیه هر جلسه را دریافت کنید.</p>
 
-                        <form action="#" method="post" class="form-subscribe">
+                        <form action="/phone" method="post" class="form-subscribe">
+                            @csrf
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control border-white text-white bg-transparent"
-                                       placeholder="۰۹۱۲۱۲۳۴۵۶۷" aria-label="Enter Email"
+                                <input id="phone" type="text" class="form-control border-white text-white bg-transparent"
+                                       placeholder="۰۹۱۲۱۲۳۴۵۶۷" aria-label="Enter Email" required minlength="11" maxlength="11"
                                        aria-describedby="button-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button" id="button-addon2">ارسال</button>
+                                    <button class="btn btn-primary" id="addPhone">ارسال</button>
                                 </div>
                             </div>
                         </form>
@@ -324,6 +330,34 @@
     <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.js"></script>
+
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('#addPhone').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                jQuery.ajax({
+                    url: "{{ url('/phone') }}",
+                    method: 'post',
+                    data: {
+                        phone: jQuery('#phone').val(),
+                    },
+
+                    success: function(result){
+                        swal.fire({
+                            text: result.message,
+                            icon: result.type,
+                        })
+                    },
+                });
+            });
+        });
+     </script>
 
 
 </body>

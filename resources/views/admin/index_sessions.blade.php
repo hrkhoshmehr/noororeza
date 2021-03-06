@@ -20,6 +20,7 @@
                 <th scope="col">عنوان</th>
                 <th scope="col">نوع</th>
                 <th scope="col">مناسبت</th>
+                <th scope="col">نام مستعار</th>
             </tr>
         </thead>
         <tbody>
@@ -28,13 +29,14 @@
                 <td>{{$session->id}}</td>
                 <td>{{$session->title}}</td>
                 <td>{{$session->getType()}}</td>
-                <td>{{optional($session->event)->title}}</td>
+                <td>{{$session->event ? $session->event->title : 'متفرقه'}}</td>
+                <td>{{$session->slug}}</td>
                 <td>
                     <form method="POST" action="{{route('admin.session.destroy', $session->id)}}">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">
-                            <a class="btn btn-info" href="{{'/session/'.$session->id}}">جزئیات</a>
+                            <a class="btn btn-info" href="/{{$session->getType().'/'.$session->id}}">جزئیات</a>
                             <a class="btn btn-warning" href="{{route('admin.session.edit', $session->id)}}">ویرایش</a>
                             <input type="submit" class="btn btn-danger" value="حذف">
                             @if($session->published == 1)

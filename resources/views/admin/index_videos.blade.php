@@ -27,14 +27,13 @@
             <tr>
                 <td >{{$video->id}}</td>
                 <td>{{$video->description}}</td>
-                <td><a href="{{'/session/'.optional($video->session)->id}}">{{optional($video->session)->title}}</a></td>
+                <td><a href="{{$video->session->getType().$video->session->id}}">{{optional($video->session)->title}}</a></td>
                 <td><a href="{{'https://www.aparat.com/v/'.$video->uid}}">{{'aparat.com/v/'.$video->uid}}</a></td>
                 <td>
                     <form method="POST" action="{{route('admin.video.destroy', $video->id)}}">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">
-                            <a class="btn btn-info" href="{{route('admin.video.show', $video->id)}}">جزئیات</a>
                             <a class="btn btn-warning" href="{{route('admin.video.edit', $video->id)}}">ویرایش</a>
                             <input type="submit" class="btn btn-danger" value="حذف">
                         </div>

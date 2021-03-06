@@ -18,7 +18,7 @@
             <tr>
                 <th scope="col">شناسه</th>
                 <th scope="col">عنوان</th>
-                <th scope="col">مناسبت</th>
+                <th scope="col">مراسم</th>
                 <th scope="col">صوت</th>
             </tr>
         </thead>
@@ -27,14 +27,13 @@
             <tr>
                 <td >{{$sound->id}}</td>
                 <td>{{$sound->title}}</td>
-                <td>{{optional($sound->session)->title}}</td>
+                <td>{{$sound->session->getType().$sound->session->id}}</td>
                 <td><audio src="{{asset($sound->url)}}"></audio></td>
                 <td>
                     <form method="POST" action="{{route('admin.sound.destroy', $sound->id)}}">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">
-                            <a class="btn btn-info" href="{{route('admin.sound.show', $sound->id)}}">جزئیات</a>
                             <a class="btn btn-warning" href="{{route('admin.sound.edit', $sound->id)}}">ویرایش</a>
                             <input type="submit" class="btn btn-danger" value="حذف">
                         </div>

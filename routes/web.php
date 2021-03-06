@@ -24,18 +24,26 @@ Route::get('login', function () {
             return view('admin.panel');
         });
         Route::resource('session', 'Admin\SessionController');
-        Route::resource('event', 'Admin\EventController');
-        Route::resource('photo', 'Admin\PhotoController');
-        Route::resource('video', 'Admin\VideoController');
-        Route::resource('sound', 'Admin\SoundController');
-        Route::post('user/create', 'Admin\UserController@addUser');
         Route::get('session/publish/{session}', 'Admin\SessionController@togglePublish');
         Route::get('session/unpublish/{session}', 'Admin\SessionController@togglePublish');
+
+        Route::resource('event', 'Admin\EventController');
+
+        Route::resource('photo', 'Admin\PhotoController');
+
+        Route::resource('video', 'Admin\VideoController');
+
+        Route::resource('sound', 'Admin\SoundController');
+
+        Route::post('user/create', 'Admin\UserController@addUser');
+
+        Route::resource('phone', 'Admin\PhoneController');
+        Route::get('/phone/{phone}/active', 'Admin\PhoneController@active')->name('phone.active');
 
 });
 
 Route::get('heyat', 'SessionController@indexSessions')->name('heyat.index');
 Route::get('heyat/{session}', 'SessionController@show')->name('heyat.show');;
 Route::get('jahadi', 'SessionController@indexJahadi')->name('jahadi.index');;
-Route::get('jahadi/{session}', 'SessionController@showjahadi')->name('jahadi.show');;
+Route::get('jahadi/{session}', 'SessionController@show')->name('jahadi.show');;
 Route::post('phone', 'PhoneController@store');

@@ -4,12 +4,15 @@
   	    <title>@yield('title')</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/css/admin/persian-datepicker.css"/>
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" >
+        <link rel="stylesheet" href="/css/app.css"/>
 
 		<link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
 		<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
+        @yield('style')
     </head>
     <body style="direction: rtl !important; text-align: right !important;">
 
@@ -33,6 +36,9 @@
                         <li>
                             <a href="{{route('admin.photo.index')}}">تصاویر</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.phone.index')}}">شماره تلفن ها</a>
+                        </li>
 	                </ul>
 
 
@@ -47,9 +53,10 @@
         </div>
 
         <script src="{{asset('js/admin/jquery.min.js')}}"></script>
-
+        <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('js/admin/popper.js')}}"></script>
         <script src="{{asset('js/admin/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/admin/main.js')}}"></script>
+        @yield('js')
     </body>
 </html>

@@ -20,6 +20,7 @@ class CreateSessionsTable extends Migration
             $table->string('cover')->nullable();
             $table->boolean('published')->nullable();
             $table->string('notification')->nullable();
+            $table->string('slug')->nullable();
             $table->date('date');
             $table->tinyInteger('type')->nullable()->default(null);
             $table->foreignId('event_id')->nullable();

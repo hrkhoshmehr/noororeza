@@ -1,35 +1,37 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Verta;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-use Verta;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Session extends Model
 {
     use HasFactory, Sluggable, SluggableScopeHelpers;
 
+
     public function event()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo('App\Models\Event');
     }
 
     public function photos()
     {
-        return $this->hasMany(Photo::class);
+        return $this->hasMany('App\Models\Photo');
     }
 
     public function sounds()
     {
-        return $this->hasMany(Sound::class);
+        return $this->hasMany('App\Models\Sound');
     }
 
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany('App\Models\Video');
     }
 
     public function getType() {
@@ -40,26 +42,25 @@ class Session extends Model
         }
     }
 
+
     public function sluggable(): array
     {
-
+        $v = verta($this->date);
         return [
             'slug' => [
-                'source' => 'fullname'
+                'source' => ['title', $v->formatWord('d F ') . $v->year],
             ]
         ];
     }
 
-    public function getFullnameAttribute(): string
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName(): string
     {
-        $v = verta($this->date);
-        $date = $v->formatWord('d F ') . $v->year;
-        return $date . ' ' . $this->title;
-    }
-
-    public function getTextAttribute($value)
-    {
-        return nl2br(e($value), false);
+        return 'slug';
     }
 
 
@@ -71,5 +72,6 @@ class Session extends Model
         'cover',
         'notification',
         'date',
+        'slug',
     ];
 }

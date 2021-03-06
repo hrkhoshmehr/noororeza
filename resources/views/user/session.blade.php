@@ -34,7 +34,7 @@
                     <h1 class="font-weight-bold text-white ml-auto m-3">{{$session->title}}</h1>
                 </div>
                 <div class="col-md-12 text-center mr-5 d-flex align-items-center">
-                    <h5 class="font-weight-bold text-white ml-auto text-muted">{{$session->description}}</h5>
+                    <h5 class="font-weight-bold text-white ml-auto text-muted">{!! nl2br(e($session->description)) !!}</h5>
                 </div>
             </div>
 

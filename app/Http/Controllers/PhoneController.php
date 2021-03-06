@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Phone;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePhoneRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PhoneController extends Controller
 {
@@ -27,11 +29,27 @@ class PhoneController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'phone' => 'numeric|min:11|max:11|unique:phones',
-        ]);
+        $messages = [
+            'phone.required' => 'شماره تلفن را وارد کنید.',
+            'phone.numeric' => 'شماره تلفن باید عدد باشد.',
+            'phone.digits' => 'شماره تلفن باید 11 رقم باشد.',
+            'phone.unique' => 'شماره شما قبلا ثبت شده است.',
+        ];
+
+        $rules = [
+            'phone' => 'required|numeric|digits:11|unique:phones',
+        ];
+
+        $validator = Validator::make($request->all(), $rules , $messages);
+
+        if($validator->fails()) {
+
+            return response()->json(['message' => $validator->errors()->first(), 'type' => 'error'], 200);
+        }
 
         $phone = Phone::create($request->all());
+
+        return response()->json(['message' =>'شماره تلفن با موفقیت اضافه شد.', 'type' => 'success'], 200);
     }
 
     /**

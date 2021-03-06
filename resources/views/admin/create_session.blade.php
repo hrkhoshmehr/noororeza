@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 
+@section('style')
+    <link rel="stylesheet" href="/css/persian-datepicker.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="/js/admin/persian-date.js"></script>
+    <script src="/js/admin/persian-datepicker.js"></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="card m-5" style="width: 50rem;">
@@ -21,7 +30,7 @@
                 @csrf
                 <div class="form-group">
                     <label>عنوان</label>
-                    <input type="text" name="title" class="form-control" placeholder="عنوان">
+                    <input style="font-family: arial" type="text" name="title" class="form-control" placeholder="عنوان">
                 </div>
                 <div class="form-group">
                     <label>توضیحات</label>
@@ -29,7 +38,22 @@
                 </div>
                 <div class="form-group">
                     <label>تاریخ</label>
-                    <input type="date" name="date" class="form-control" placeholder="تاریخ">
+                    <script>
+                        $(document).ready(function() {
+                            $(".example1").pDatepicker({
+                                format: 'X'
+
+                            });
+                        });
+                        </script>
+                    <input class="example1 form-control"   name="date">
+                </div>
+                <div class="form-group">
+                    <label for="type">نوع</label>
+                    <select class="form-control" id="type" name="type">
+                            <option class="dropdown-item" value="1">هیئت</option>
+                            <option class="dropdown-item" value="2">جهادی</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="type">مناسبت</label>
@@ -46,11 +70,16 @@
                 </div>
                 <div class="form-group">
                     <label for="notification">اطلاعیه</label>
-                    <input type="file" name="notification" class="form-control-file" id="notification">
+                    <input  type="file" name="notification" class="form-control-file" id="notification">
                 </div>
 
                 <button class="btn btn-primary" type="submit">بساز</button>
             </form>
     </div>
 </div>
+
+@section('js')
+<script src="/js/app.js"></script>
+
+@endsection
 @endsection
